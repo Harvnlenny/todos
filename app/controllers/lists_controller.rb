@@ -2,13 +2,11 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
 
   # GET /lists
-  # GET /lists.json
   def index
     @lists = List.all
   end
 
   # GET /lists/1
-  # GET /lists/1.json
   def show
   end
 
@@ -21,43 +19,39 @@ class ListsController < ApplicationController
   def edit
   end
 
+  def search
+    @items = Item.search(params[:word])
+  end
+
   # POST /lists
-  # POST /lists.json
   def create
     @list = List.new(list_params)
 
     respond_to do |format|
       if @list.save
-        format.html { redirect_to @list, notice: 'List was successfully created.' }
-        format.json { render :show, status: :created, location: @list }
+        format.html {redirect_to root_path, notice: 'List was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+        format.html { render :new } 
       end
     end
   end
 
   # PATCH/PUT /lists/1
-  # PATCH/PUT /lists/1.json
   def update
     respond_to do |format|
       if @list.update(list_params)
-        format.html { redirect_to @list, notice: 'List was successfully updated.' }
-        format.json { render :show, status: :ok, location: @list }
+        format.html {redirect_to root_path, notice: 'List was successfully updated.' }
       else
-        format.html { render :edit }
-        format.json { render json: @list.errors, status: :unprocessable_entity }
+         format.html {render :edit } 
       end
     end
   end
 
   # DELETE /lists/1
-  # DELETE /lists/1.json
   def destroy
     @list.destroy
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to lists_url, notice: 'List was successfully destroyed.' }
     end
   end
 

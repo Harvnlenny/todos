@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Lists</h1>
+<h1>Todo Lists</h1>
 
 <table>
   <thead>
@@ -14,6 +14,9 @@
     <% @lists.each do |list| %>
       <tr>
         <td><%= list.name %></td>
+        <td><%= list.items.each do |item| %>
+          <td><%= "#{item.task}" %></td>
+          <% end %>
         <td><%= link_to 'Show', list %></td>
         <td><%= link_to 'Edit', edit_list_path(list) %></td>
         <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
