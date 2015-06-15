@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'items#index'
+  get 'items/:id/date', to: 'items#date', as: 'item_date'
+  get 'items/:id/nxt_task', to: 'items#nxt_task', as: 'item_nxt_task'
+  get 'items/:id/done', to: 'items#done', as: 'item_done'
   get '/search', to: 'items#search'
 
   # Example of regular route:

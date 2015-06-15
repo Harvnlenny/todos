@@ -3,8 +3,17 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
+    @items = Item.all  
+  end
+
+  def nxt_task
+    item_id = Random.rand(1..Item.count)
     
+  end
+
+
+  def date
+    @items = Item.all
   end
 
   # GET /items/1
