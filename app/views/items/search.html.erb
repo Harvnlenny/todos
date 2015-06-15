@@ -1,0 +1,10 @@
+<h1>Here are the tasks which match your search terms</h1>
+<%@items.each do |item| %>
+    <% done = item.is_complete ? '√' : ' '%>
+        <ul>
+          <li><h4>
+            <%formatted_time = item.due_date.blank? ? item.due_date : item.due_date.strftime("%B %e %Y")  %>
+            <%= "[#{done}] #{item.id} #{item.task}   due: #{formatted_time}"%><br>
+            <%= link_to 'Home', root_path %></li></h4>
+        </ul>
+    <% end %>

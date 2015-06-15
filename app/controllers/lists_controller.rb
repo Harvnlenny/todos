@@ -4,6 +4,11 @@ class ListsController < ApplicationController
   # GET /lists
   def index
     @lists = List.all
+    if params[:search]
+      @lists = List.search(params[:search])
+    else
+      @lists = List.all
+    end
   end
 
   # GET /lists/1
@@ -19,9 +24,9 @@ class ListsController < ApplicationController
   def edit
   end
 
-  def search
-    @items = Item.search(params[:word])
-  end
+  #def search
+   # @lists = List.search(params[:word])
+  #end
 
   # POST /lists
   def create

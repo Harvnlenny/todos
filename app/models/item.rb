@@ -1,10 +1,24 @@
 class Item < ActiveRecord::Base
   belongs_to :list
-  def complete!
-    update_attribute :is_complete, true
+  
+  def self.completion
+    no_completed_items = true
+    items = Item.all
+    items.each do |item|
+      if item.is_complete
+        no_completed_items = false
+      end
+    end
+      !no_completed_items
   end
 
-  def due!(time)
-    update_attribute :due_date, time
+  def self.search(word)
+    where (["LOWER(task) LIKE ?", "%#{word.downcase}%"])
   end
+  
+
+  
+
 end
+
+

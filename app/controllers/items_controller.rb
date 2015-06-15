@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   def index
     @items = Item.all
+    
   end
 
   # GET /items/1
@@ -17,6 +18,10 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+  end
+
+  def search
+    @items = Item.search(params[:word])
   end
 
   # POST /items
@@ -61,4 +66,5 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:task, :due_date, :is_complete, :list_id)
     end
-end
+  end
+
