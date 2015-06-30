@@ -62,11 +62,10 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     respond_to do |format|
-      if @item.update(item_params)
-        redirect_to @item, notice: 'Item was successfully updated.' 
-      else
-        render :edit 
-      end
+      @item.update(item_params)
+      format.html {redirect_to items_url}
+       
+    
     end
   end
 

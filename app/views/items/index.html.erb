@@ -20,6 +20,7 @@
         <td><%= item.due_date %></td>
         <td><%= item.is_complete %></td>
         <td><%= item.list.name %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
       </tr>
     <% end %>
       <li><%= form_tag("/search", method: "get") do %>
