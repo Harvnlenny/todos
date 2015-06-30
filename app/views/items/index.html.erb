@@ -39,5 +39,5 @@
 <% @item.due_date.blank? ? @item.due_date : @item.due_date.strftime("%B %e %y")
   done = @item.is_complete ? '√' : ' '%>
 <h1><%=   "[#{done}] #{@item.task}   due: #{@item.due_date}"  %></h1>
-<h4>*Click the home page button for a random task</h4>
+<h4><%= link_to '*Click here for a random task', items_path%></h4>
 
