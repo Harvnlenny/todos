@@ -10,15 +10,18 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    item_id = Random.rand(1..Item.count)
-    @item = Item.find(item_id)
-    unless Item.has_dates == false || Item.completion == false
-      puts "unless avoided"
-      while @item.due_date.blank? || @item.is_complete
-        item_id = Random.rand(1..Item.count)
-        @item = Item.find(item_id)
-      end
-    end
+    
+    #item_id = Random.rand(1..Item.count)
+    # @item = Item.find(item_id)
+    # unless Item.has_dates == false || Item.completion == false
+    #   puts "unless avoided"
+    #   while @item.due_date.blank? || @item.is_complete
+    #     item_id = Random.rand(1..Item.count)
+    #     @item = Item.find(item_id)
+    #   end
+    # end
+
+    @item = Item.where(:is_complete => false).where.not(:due_date => nil).order("RANDOM()").first
   end
 
 
