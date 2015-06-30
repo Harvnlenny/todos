@@ -1,6 +1,5 @@
 <h2>And your next task should be:</h2>
-<% @item.due_date.blank? ? @item.due_date : @item.due_date.strftime("%B %e %y")
-  done = @item.is_complete ? '√' : ' '%>
+
 <h1><%=   "[#{done}] #{@item.id} #{@item.task}   due: #{@item.due_date}"  %></h1>
 <ul class="side-nav">
   <li><%= link_to 'Home', root_path, class: "button secondary small" %></li>

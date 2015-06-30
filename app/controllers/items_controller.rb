@@ -2,13 +2,23 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   # GET /items
-  def index
-    @items = Item.all  
-  end
+  #def index
+   # @items = Item.all
 
-  def nxt_task
+
+  #end
+
+  def index
+    @items = Item.all
     item_id = Random.rand(1..Item.count)
-    
+    @item = Item.find(item_id)
+    unless Item.has_dates == false || Item.completion == false
+      puts "unless avoided"
+      while @item.due_date.blank? || @item.is_complete
+        item_id = Random.rand(1..Item.count)
+        @item = Item.find(item_id)
+      end
+    end
   end
 
 
