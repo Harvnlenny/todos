@@ -37,5 +37,9 @@
 
 <%= link_to 'New Item', new_item_path %>
 <%= link_to 'New Person', new_list_path %>
-
+<h2>And your next task should be:</h2>
+<% @item.due_date.blank? ? @item.due_date : @item.due_date.strftime("%B %e %y")
+  done = @item.is_complete ? '√' : ' '%>
+<h1><%=   "[#{done}] #{@item.id} #{@item.task}   due: #{@item.due_date}"  %></h1>
+<h4>*Refresh the home page for a random task</h4>
 
