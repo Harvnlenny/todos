@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
     #   end
     # end
 
-    @item = Item.where(:is_complete => false).where.not(:due_date => nil).order("RANDOM()").first
+    #@item = Item.where(:is_complete => false).where.not(:due_date => nil).order("RANDOM()").first
   end
 
 
